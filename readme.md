@@ -2,8 +2,14 @@
 
 Clone the repository
 
+Install project dependencies
 ```bash
 npm i
 ```
 
-Run the `init.sql` script on a local database.
+Execute the `init.sql` script on a local database.
+
+Run the app locally
+```bash
+npx nodemon
+```
