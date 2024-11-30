@@ -1,11 +1,13 @@
 const express = require('express');
 const mariadb = require('mariadb');
 
+require('dotenv').config();
+
 const pool = mariadb.createPool({
-    host: 'localhost',
-    user: 'root',
-    password: '1234',
-    database: 'task_manager'
+    host: process.env.DB_HOST,
+    user: process.env.DB_USER,
+    password: process.env.DB_PASSWORD,
+    database: process.env.DB_NAME,
 });
 
 async function connect() {
@@ -19,7 +21,6 @@ async function connect() {
 }
 
 const app = express();
-const PORT = 3000;
 
 app.use(express.urlencoded({ extended: false }));
 app.use(express.static('public'));
@@ -66,6 +67,6 @@ app.post('/tasks/:id/delete', async (req, res) => {
 });
 
 // Start the server
-app.listen(PORT, () => {
-    console.log(`Server running on http://localhost:${PORT}`);
+app.listen(process.env.APP_PORT, () => {
+    console.log(`Server running on http://localhost:${process.env.APP_PORT}`);
 });
