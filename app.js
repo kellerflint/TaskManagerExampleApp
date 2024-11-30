@@ -43,7 +43,7 @@ app.post('/tasks', async (req, res) => {
         return res.status(400).send('Title is required');
     }
     const conn = await connect();
-    await conn.query('INSERT INTO tasks (title, description) VALUES (?, ?)', [title, description]);
+    await conn.query('INSERT INTO tasks (title) VALUES (?, ?)', [title, description]);
     conn.end();
     res.redirect('/');
 });
