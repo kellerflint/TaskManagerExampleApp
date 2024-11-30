@@ -13,3 +13,5 @@ Run the app locally
 ```bash
 npx nodemon
 ```
+
+Update your database connection info
