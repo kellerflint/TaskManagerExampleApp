@@ -1,17 +1,17 @@
 # Setup Steps
 
-Clone the repository
+1. Clone the repository
 
-Install project dependencies
+2. Install project dependencies
 ```bash
 npm i
 ```
 
-Execute the `init.sql` script on a local database.
+3. Execute the `init.sql` script on a local database.
 
-Run the app locally
+4. Run the app locally
 ```bash
 npx nodemon
 ```
 
-Update your database connection info
+5. Update your database connection info
