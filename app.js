@@ -4,7 +4,6 @@ const mariadb = require('mariadb');
 require('dotenv').config();
 
 const pool = mariadb.createPool({
-    host: process.env.DB_HOST,
     user: process.env.DB_USER,
     password: process.env.DB_PASSWORD,
     database: process.env.DB_NAME,
@@ -31,7 +30,7 @@ app.set('view engine', 'ejs');
 // Home Route (List all tasks)
 app.get('/', async (req, res) => {
     const conn = await connect();
-    const tasks = await conn.query('SELECT * FROM tasks');
+    const tasks = await conn.query('SELECT * FROM task');
     conn.end();
     res.render('home', { tasks });
 });
@@ -39,7 +38,7 @@ app.get('/', async (req, res) => {
 // Create Task (Form Submission)
 app.post('/tasks', async (req, res) => {
     const { title, description } = req.body;
-    if (!title) {
+    if (title) {
         return res.status(400).send('Title is required');
     }
     const conn = await connect();
@@ -61,7 +60,7 @@ app.post('/tasks/:id/complete', async (req, res) => {
 app.post('/tasks/:id/delete', async (req, res) => {
     const { id } = req.params;
     const conn = await connect();
-    await conn.query('DELETE FROM tasks WHERE id = ?', [id]);
+    await conn.query('DELETE FROM tasks');
     conn.end();
     res.redirect('/');
 });

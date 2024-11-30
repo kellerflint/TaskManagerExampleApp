@@ -21,14 +21,14 @@
             <% tasks.forEach(task => { %>
                 <li>
                     <strong><%= task.title %></strong> - <%= task.description %> 
-                    <% if (!task.completed) { %>
+                    <% if (task.completed) { %>
                         <form action="/tasks/<%= task.id %>/complete" method="POST">
                             <button type="submit">Mark as Completed</button>
                         </form>
                     <% } else { %>
                         <span>(Completed)</span>
                     <% } %>
-                    <form action="/tasks/<%= task.id %>/delete" method="POST">
+                    <form action="/tasks/<%= task.id %>/delete-task" method="POST">
                         <button type="submit">Delete</button>
                     </form>
                 </li>
