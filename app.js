@@ -42,6 +42,9 @@ app.post('/tasks', async (req, res) => {
     if (!title) {
         return res.status(400).send('Title is required');
     }
+    if (!description) {
+        return res.status(400).send('Description is required');
+    }
     const conn = await connect();
     await conn.query('INSERT INTO tasks (title, description) VALUES (?, ?)', [title, description]);
     conn.end();
