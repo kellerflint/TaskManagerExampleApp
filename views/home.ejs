@@ -4,12 +4,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Task Manager</title>
-    <link rel="stylesheet" href="styles/style.css">
+    <!--<link rel="stylesheet" href="styles/style.css">-->
+    <link href="/css/tailwind.css" rel="stylesheet">
 </head>    
 <body>
     <main>
         <h1>Task Manager</h1>
-
+        
+        <div class="bg-blue-500 text-white text-center p-4">
+            Hello, Tailwind!
+        </div>
+          
         <form action="/tasks" method="POST">
             <input type="text" name="title" placeholder="Task Title" />
             <textarea name="description" placeholder="Task Description"></textarea>

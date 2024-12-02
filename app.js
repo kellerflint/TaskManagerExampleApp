@@ -30,7 +30,7 @@ app.set('view engine', 'ejs');
 // Home Route (List all tasks)
 app.get('/', async (req, res) => {
     const conn = await connect();
-    const tasks = await conn.query('SELECT * FROM task');
+    const tasks = await conn.query('SELECT * FROM tasks');
     conn.end();
     res.render('home', { tasks });
 });
